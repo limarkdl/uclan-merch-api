@@ -9,10 +9,12 @@ function testGetAllUsers() {
     $output = ob_get_contents();
     ob_end_clean();
     $decoded = json_decode($output, true);
-    $passed = is_array($decoded);
+    $passed = is_array($decoded) && !isset($decoded['message']);
+
     $message = $passed ? 'All users retrieved successfully' : 'Failed to retrieve all users';
-    return ['User Controller: Get All Users', $passed, $message];
+    return ['User Controller: Get All Users', $passed, $message, $output];
 }
+
 
 function testCreateUser() {
     $controller = new UserController();
@@ -29,7 +31,6 @@ function testCreateUser() {
     }
     $output = ob_get_contents();
     ob_end_clean();
-
     $decoded = json_decode($output, true);
     $passed = isset($decoded['message']) && $decoded['message'] == 'User Created';
     $message = $passed ? 'User created successfully' : 'Failed to create user';
@@ -43,22 +44,17 @@ function testLoginUser() {
         'username' => 'testUser',
         'password' => 'testPassword',
     ];
-
-    // Start output buffering
+    error_reporting(0);
     ob_start();
 
     $controller->loginUser($testData);
-    // Get the contents from the buffer
     $output = ob_get_contents();
 
-    // End and clean the buffer
     ob_end_clean();
 
-    // Decode the output to an associative array
     $outputArray = json_decode($output, true);
 
-    // Check if the user is logged in based on the output message
-    $passed = isset($outputArray['message']) && $outputArray['message'] == 'Successfully';
+    $passed = isset($outputArray['message']) && $outputArray['message'] == 'Successfully logged in';
 
     $message = $passed ? 'User login successful' : 'Failed to login user';
 
@@ -72,7 +68,7 @@ function testDeleteUser() {
     $testUser = $user->getUserByUsername('testUser');
     ob_start();
     try {
-        $userController->deleteUser($testUser['id']);
+        $userController->deleteUser($testUser['username'], "testPassword");
         $passed = true;
         $message = 'User deleted successfully';
     } catch (Exception $e) {

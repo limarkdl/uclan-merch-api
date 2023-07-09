@@ -8,7 +8,11 @@
 <div class="container mx-auto my-10">
     <h1 class="text-4xl mb-6 text-center">Test Report</h1>
     <div id="tests" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
+    <br />
+        <p class="text-center"><?php
+            date_default_timezone_set('Asia/Nicosia');
+            echo date("Y-m-d H:i:s") . " Cyprus, Nicosia"
+            ?></p>
     </div>
 </div>
 <?php

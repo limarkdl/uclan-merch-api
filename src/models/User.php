@@ -12,6 +12,7 @@ class User
     public $username;
     public $password;
     public $email;
+    public $role;
 
     // Constructor with DB
     public function __construct()
@@ -45,6 +46,7 @@ class User
         }
     }
 
+    // Get User by username
     public function getUserByUsername($username)
     {
         $query = 'SELECT * FROM ' . $this->table . ' WHERE username = :username LIMIT 1';
@@ -58,15 +60,15 @@ class User
             $this->id = $row['id'];
             $this->username = $row['username'];
             $this->email = $row['email'];
+            $this->role = $row['role'];
             return $row;
         }
 
         return null;
     }
-    // COMING SOON
-    // Update
+
     // Delete
-    public function delete($id)
+    public function deleteUser($id)
     {
         $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
         $stmt = $this->conn->prepare($query);

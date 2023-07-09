@@ -13,6 +13,16 @@ class UserController
 
     public function getAllUsers()
     {
+        if (!isset($_SESSION['user'])) {
+            echo json_encode(array('message' => 'Not logged in'));
+            return;
+        }
+
+        if ($_SESSION['user']['role'] !== 'admin') {
+            echo json_encode(array('message' => 'Insufficient permissions'));
+            return;
+        }
+
         $result = $this->user->read();
         $num = $result->rowCount();
 
@@ -54,34 +64,69 @@ class UserController
     {
         $user = $this->user->getUserByUsername($userData['username']);
 
-
         if ($user) {
             if (password_verify($userData['password'], $user['password'])) {
                 unset($user['password']);
-                echo json_encode(array('message' => 'Successfully', 'user' => $user));
 
+                $secure = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on';
+                $httponly = true;
+
+                session_set_cookie_params(0, '/', '', $secure, $httponly);
+
+                session_start();
+
+                session_regenerate_id(true);
+
+                $_SESSION['user'] = $user;
+
+                echo json_encode(array('message' => 'Successfully logged in', 'user' => $user));
             } else {
                 echo json_encode(array('message' => 'Incorrect username / password'));
             }
         } else {
-            echo json_encode(array('message' => 'Internal error'));
+            echo json_encode(array('message' => 'Incorrect username / password'));
         }
-
     }
 
-    // COMING SOON
-    // Update
+
+    public function logoutUser()
+    {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $_SESSION = array();
+        error_reporting(0);
+
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+
+        session_destroy();
+
+        echo json_encode(array('message' => 'Successfully logged out'));
+    }
+
 
     // Delete
-    public function deleteUser($id)
+    public function deleteUser($username, $password)
     {
-        $existingUser = $this->user->getUserById($id);
+        $user = $this->user->getUserByUsername($username);
 
-        if ($existingUser) {
-            $this->user->delete($id);
-            echo json_encode(['message' => 'User Deleted Successfully']);
+        if ($user && password_verify($password, $user['password'])) {
+            if ($this->user->deleteUser($user['id'])) {
+                echo json_encode(['message' => 'User deleted successfully']);
+                $this->logoutUser();
+            } else {
+                echo json_encode(['message' => 'Something went wrong while trying to delete the user']);
+            }
         } else {
-            throw new Exception('No user found with this ID');
+            echo json_encode(['message' => 'Incorrect password']);
         }
     }
+
 }
