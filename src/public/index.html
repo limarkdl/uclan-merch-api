@@ -11,27 +11,76 @@
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
 <div class="container mx-auto my-5 p-5">
-    <h1 class="text-5xl text-center text-red-500 mb-4">UCLan Merch Shop <i class="text-violet-800">.php</i></h1>
-
-    <h1 class="text-4xl text-center text-blue-700 mb-4">API Documentation</h1>
+    <header class="flex flex-col justify-between md:flex-row md:[] md:text-center">
+        <h1 class="text-3xl text-center text-red-600 mb-4 xl:text-4xl">UCLan Merch Shop <i class="text-violet-800">.php</i></h1>
+        <h1 class="text-1xl text-center text-grey-700 mb-4">API Documentation</h1>
+        <h1 class="text-1xl font-bold text-center 
+        text-red-600 border-dashed mb-4">In progress...</h1>
+    
+    </header>
+    
     <section class="mb-8 bg-white shadow-md rounded-lg p-6">
         <h2 class="text-2xl text-blue-500 mb-2">Author:</h2>
         <p class="text-lg text-gray-700">UCLan's student, Ivan Kostin, Computing BCs</p>
     </section>
     <section class="mb-8 bg-white shadow-md rounded-lg p-6">
+        <h2 class="text-2xl text-blue-500 mb-2">GitHub:</h2>
+        <a href="https://github.com/limarkdl/uclan-merch-api" target="_blank" class="text-lg text-gray-800">https://github.com/limarkdl/uclan-merch-api</a>
+    </section>
+    <section class="mb-8 bg-white shadow-md rounded-lg p-6">
         <h2 class="text-2xl text-blue-500 mb-2">Purposes:</h2>
-        <p class="text-lg text-gray-700">This API is created for functionality of "UCLan's Merch Shop" (Assignment from Year 2 for "Web Technologies"
-            that I wish I did better). Summer is too long to spend it just for nothing.</p>
+        <p class="text-lg text-gray-700">This API is created to provide the
+            functionality of a training pseudo online merchandise store from
+            my university, UCLan (University of Central Lancashire). This is
+            part of the backend, the front will be implemented based on my
+            gradually growing project limarkdl/frontend-main-practice-own (github).
+
+            The plans are to implement all the basic authentication
+            functionality and go deeper to learn more about the internals
+            in order to initially create secure and fast interfaces.</p>
     </section>
 
     <section class="mb-8 bg-white shadow-md rounded-lg p-6">
         <h2 class="text-2xl text-blue-500 mb-2">Specifications:</h2>
-        <p class="text-lg text-gray-700">This is a JSON server that receives JSON and response with JSON</p>
+        <p class="text-lg text-gray-700">Built with .php this API provides functionality such as:</p>
+        <ul class="list-disc pl-5">
+            <li class="text-lg text-gray-700">Signing up</li>
+            <li class="text-lg text-gray-700">Log in</li>
+            <li class="text-lg text-gray-700">Nearly: Session Management (secured and tested)</li>
+            <li class="text-lg text-gray-700">Not yet: Modifying user's profile data</li>
+            <li class="text-lg text-gray-700">Not yet: Deleting user's account</li>
+        </ul>
     </section>
 
-    <section class="mb-8 bg-white shadow-md rounded-lg p-6">
+    <section class="mb-8 bg-white shadow-md rounded-lg p-6 ">
         <h2 class="text-2xl text-blue-500 mb-2">Structure:</h2>
-        <p class="text-lg text-gray-700">Secret</p>
+        <p class="text-lg text-red-500">All sensitive data was secured by privileges management</p>
+        <p class="text-lg text-red-500">It's always better to keep structure in secret, but:</p>
+        <p><pre class="text-xs"><span style="color:#12488B"><b>.</b></span>
+└── <span style="color:#12488B"><b>src</b></span>
+    ├── <span style="color:#12488B"><b>config</b></span>
+    │   └── Database.php
+    ├── <span style="color:#12488B"><b>controllers</b></span>
+    │   └── UserController.php
+    ├── <span style="color:#12488B"><b>models</b></span>
+    │   ├── Offer.php
+    │   ├── Order.php
+    │   ├── Product.php
+    │   └── User.php
+    ├── <span style="color:#12488B"><b>public</b></span>
+    │   ├── <span style="color:#12488B"><b>api</b></span>
+    │   │   ├── <span style="color:#12488B"><b>login</b></span>
+    │   │   │   └── index.php
+    │   │   └── <span style="color:#12488B"><b>signup</b></span>
+    │   │       └── index.php
+    │   ├── index.css
+    │   └── index.html
+    └── <span style="color:#12488B"><b>tests</b></span>
+        └── <span style="color:#12488B"><b>Integration</b></span>
+            ├── <span style="color:#12488B"><b>Database</b></span>
+            │   └── getConnection.test.php
+            └── Report.php
+</pre></p>
     </section>
 
     <section class="mb-8 bg-white shadow-md rounded-lg p-6">
