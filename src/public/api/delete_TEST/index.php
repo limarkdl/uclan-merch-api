@@ -33,7 +33,6 @@ $userController = new UserController();
 try {
     $userController->deleteUser(strip_tags($data->id));
     http_response_code(200);
-    echo json_encode(['message' => 'User Deleted Successfully']);
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()]);

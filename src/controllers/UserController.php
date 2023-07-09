@@ -79,6 +79,7 @@ class UserController
 
         if ($existingUser) {
             $this->user->delete($id);
+            echo json_encode(['message' => 'User Deleted Successfully']);
         } else {
             throw new Exception('No user found with this ID');
         }
