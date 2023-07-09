@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Test Report</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -30,6 +30,7 @@ foreach ($tests as $test) {
     <div class="p-6 rounded shadow-md $bgColor text-white">
         <h2 class="text-2xl mb-2">$testName</h2>
         <p>$message</p>
+        <p>$icon</p>
     </div>
 HTML;
 }

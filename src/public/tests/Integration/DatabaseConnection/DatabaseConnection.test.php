@@ -9,5 +9,3 @@ function testGetConnection() {
     $message = $passed ? 'Connection established successfully' : 'Failed to establish connection';
     return ['Test Get Connection', $passed, $message];
 }
-// Run the test
-testGetConnection();
