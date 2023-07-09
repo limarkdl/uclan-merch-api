@@ -66,4 +66,38 @@ class User
     // COMING SOON
     // Update
     // Delete
+    public function delete($id)
+    {
+        $query = 'DELETE FROM ' . $this->table . ' WHERE id = :id';
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            printf("Error: %s.\n", $stmt->error);
+            return false;
+        }
+    }
+
+    // Get user by ID
+    public function getUserById($id)
+    {
+        $query = 'SELECT * FROM ' . $this->table . ' WHERE id = :id LIMIT 1';
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($row) {
+            $this->id = $row['id'];
+            $this->username = $row['username'];
+            $this->email = $row['email'];
+            return $row;
+        }
+
+        return null;
+    }
+
 }

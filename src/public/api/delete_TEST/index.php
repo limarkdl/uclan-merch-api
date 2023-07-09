@@ -22,23 +22,18 @@ if (json_last_error() !== JSON_ERROR_NONE || empty($data)) {
     exit();
 }
 
-if (!isset($data->username, $data->password) || !is_string($data->username) || !is_string($data->password)) {
+if (!isset($data->id) || !is_numeric($data->id)) {
     http_response_code(400);
-    echo json_encode(['error' => 'Invalid or missing username/password']);
+    echo json_encode(['error' => 'Invalid or missing user id']);
     exit();
 }
 
 $userController = new UserController();
 
 try {
-    $userData = [
-        'username' => strip_tags($data->username),
-        'password' => strip_tags($data->password),
-    ];
-
-    $userController->loginUser($userData);
-
-
+    $userController->deleteUser(strip_tags($data->id));
+    http_response_code(200);
+    echo json_encode(['message' => 'User Deleted Successfully']);
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()]);

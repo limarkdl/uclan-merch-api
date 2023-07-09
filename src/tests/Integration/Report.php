@@ -16,22 +16,23 @@
 require_once __DIR__ . '/../../config/Database.php';
 
 require_once __DIR__ . '/Database/getConnection.test.php';
+require_once __DIR__ . '/controllers/UserController.test.php';
 
-
-$tests = [testGetConnection()];
+$tests = [testGetConnection(), testCreateUser(), testLoginUser(), testGetAllUsers(), testDeleteUser()];
 
 foreach ($tests as $test) {
     $testName = $test[0];
     $passed = $test[1];
     $message = $test[2];
+    $output = isset($test[3]) ? $test[3] : "No output for test";
     $bgColor = $passed ? 'bg-green-500' : 'bg-red-500';
     $icon = $passed ? '✓' : '✖';
-
     echo <<<HTML
-    <div class="p-6 rounded shadow-md $bgColor text-white">
+    <div class="p-6 w-5/6 rounded mb-4 shadow-md ml-auto mr-auto $bgColor text-white">
         <h2 class="text-2xl mb-2">$testName</h2>
         <p>$message</p>
         <p>$icon</p>
+         <code class="json">$output</code>
     </div>
 HTML;
 }

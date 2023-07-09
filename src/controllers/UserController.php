@@ -19,6 +19,7 @@ class UserController
         if ($num > 0) {
             $users_arr = array();
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                unset($row['password']);
                 array_push($users_arr, $row);
             }
             echo json_encode($users_arr);
@@ -53,16 +54,33 @@ class UserController
     {
         $user = $this->user->getUserByUsername($userData['username']);
 
+
         if ($user) {
             if (password_verify($userData['password'], $user['password'])) {
                 unset($user['password']);
-                return $user;
+                echo json_encode(array('message' => 'Successfully', 'user' => $user));
+
+            } else {
+                echo json_encode(array('message' => 'Incorrect username / password'));
             }
+        } else {
+            echo json_encode(array('message' => 'Internal error'));
         }
-        return null;
+
     }
 
     // COMING SOON
     // Update
+
     // Delete
+    public function deleteUser($id)
+    {
+        $existingUser = $this->user->getUserById($id);
+
+        if ($existingUser) {
+            $this->user->delete($id);
+        } else {
+            throw new Exception('No user found with this ID');
+        }
+    }
 }
