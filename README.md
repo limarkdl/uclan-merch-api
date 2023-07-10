@@ -43,3 +43,22 @@ STRUCTURE:
         │   └── getConnection.test.php
         └── Report.php
 </pre>
+
+
+METHODS:
+<br/>
+![Methods Image](about/Methods.png)
+
+
+FUNCTIONALITY:
+<br/>
+![Functionality Image](about/Functionality.png)
+
+
+REPORT EXAMPLE:
+<br/>
+![Report Image](about/Report.png)
+
+
+
+
