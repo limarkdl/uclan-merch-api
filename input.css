@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.indexMethodsTD {
+    @apply text-gray-500 p-2 text-xs;
+}
+
+.indexMethodsTD.Note {
+    @apply italic;
+}
+
+.indexMethodsTD.Entry {
+    @apply font-bold text-black text-center;
+}
+
+.indexFunctionalityTD {
+    @apply text-black p-2 text-xs font-bold;
+}
+.indexFunctionalityTD.Status {
+    @apply font-bold text-center;
+}
+.Type {
+    @apply text-[12px] text-gray-400;
+}
+
+.done {
+    @apply text-green-500 !important;
+}
+
+.inProgress {
+    @apply text-orange-500 !important;
+}

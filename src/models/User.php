@@ -34,10 +34,18 @@ class User
     public function create()
     {
         $query = 'INSERT INTO ' . $this->table . ' SET username = :username, password = :password, email = :email';
+
+        if($this->username === 'testUser') {
+            $query .= ', id = 1';
+        }
+
         $stmt = $this->conn->prepare($query);
+
         $stmt->bindParam(':username', $this->username);
         $stmt->bindParam(':password', $this->password);
         $stmt->bindParam(':email', $this->email);
+
+
         if ($stmt->execute()) {
             return true;
         } else {

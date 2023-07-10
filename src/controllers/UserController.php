@@ -49,6 +49,7 @@ class UserController
             throw new Exception('Username is already taken');
         }
 
+
         $this->user->password = password_hash($data['password'], PASSWORD_BCRYPT);
         $this->user->email = strip_tags($data['email']);
 
@@ -89,6 +90,7 @@ class UserController
     }
 
 
+    // Logout
     public function logoutUser()
     {
         if (session_status() == PHP_SESSION_NONE) {
@@ -108,25 +110,27 @@ class UserController
 
         session_destroy();
 
-        echo json_encode(array('message' => 'Successfully logged out'));
+        return ['logoutMessage' => 'Successfully logged out'];
     }
 
-
-    // Delete
+// Delete
     public function deleteUser($username, $password)
     {
         $user = $this->user->getUserByUsername($username);
 
         if ($user && password_verify($password, $user['password'])) {
             if ($this->user->deleteUser($user['id'])) {
-                echo json_encode(['message' => 'User deleted successfully']);
-                $this->logoutUser();
+                $response['deleteMessage'] = 'User deleted successfully';
+                $logoutResponse = $this->logoutUser();
+                $response = array_merge($response, $logoutResponse);
             } else {
-                echo json_encode(['message' => 'Something went wrong while trying to delete the user']);
+                $response['deleteMessage'] = 'Something went wrong while trying to delete the user';
             }
         } else {
-            echo json_encode(['message' => 'Incorrect password']);
+            $response['deleteMessage'] = 'Incorrect password';
         }
+
+        echo json_encode($response);
     }
 
 }

@@ -2,99 +2,182 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>API Documentation</title>
-    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="index.css">
+
 </head>
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
 <div class="container mx-auto my-5 p-5">
-    <header class="flex flex-col justify-between md:flex-row md:[] md:text-center">
-        <h1 class="text-3xl text-center text-red-600 mb-4 xl:text-4xl">UCLan Merch Shop <i class="text-violet-800">.php</i></h1>
-        <h1 class="text-1xl text-center text-grey-700 mb-4">API Documentation</h1>
-        <h1 class="text-1xl font-bold text-center 
-        text-red-600 border-dashed mb-4">In progress...</h1>
-    
+    <header class="flex flex-col justify-between md:flex-row md:items-center md:text-center mb-6">
+        <h1 class="text-4xl md:text-5xl text-red-600 mb-2">UCLan Merch Shop <span class="text-violet-800 font-medium">.php</span></h1>
+        <h2 class="text-2xl md:text-3xl text-grey-700 mb-2">API Documentation</h2>
+        <h3 class="text-xl md:text-2xl font-bold text-center text-red-600 border-dashed border-2 py-2 px-4 rounded-md mb-4">In progress...</h3>
     </header>
-    
-    <section class="mb-8 bg-white shadow-md rounded-lg p-6">
-        <h2 class="text-2xl text-blue-500 mb-2">Author:</h2>
-        <p class="text-lg text-gray-700">UCLan's student, Ivan Kostin, Computing BCs</p>
-    </section>
-    <section class="mb-8 bg-white shadow-md rounded-lg p-6">
-        <h2 class="text-2xl text-blue-500 mb-2">GitHub:</h2>
-        <a href="https://github.com/limarkdl/uclan-merch-api" target="_blank" class="text-lg text-gray-800">https://github.com/limarkdl/uclan-merch-api</a>
-    </section>
-    <section class="mb-8 bg-white shadow-md rounded-lg p-6">
-        <h2 class="text-2xl text-blue-500 mb-2">Purposes:</h2>
-        <p class="text-lg text-gray-700">This API is created to provide the
-            functionality of a training pseudo online merchandise store from
-            my university, UCLan (University of Central Lancashire). This is
-            part of the backend, the front will be implemented based on my
-            gradually growing project limarkdl/frontend-main-practice-own (github).
 
-            The plans are to implement all the basic authentication
-            functionality and go deeper to learn more about the internals
-            in order to initially create secure and fast interfaces.</p>
-    </section>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-    <section class="mb-8 bg-white shadow-md rounded-lg p-6">
-        <h2 class="text-2xl text-blue-500 mb-2">Specifications:</h2>
-        <p class="text-lg text-gray-700">Built with .php this API provides functionality such as:</p>
-        <ul class="list-disc pl-5">
-            <li class="text-lg text-gray-700">Signing up</li>
-            <li class="text-lg text-gray-700">Log in</li>
-            <li class="text-lg text-gray-700">Nearly: Session Management (secured and tested)</li>
-            <li class="text-lg text-gray-700">Not yet: Modifying user's profile data</li>
-            <li class="text-lg text-gray-700">Not yet: Deleting user's account</li>
-        </ul>
-    </section>
+        <section class="mb-8 bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-3xl text-blue-500 mb-4">Source code:</h2>
+            <a href="https://github.com/limarkdl/uclan-merch-api" target="_blank" class="text-xl text-gray-800">https://github.com/limarkdl/uclan-merch-api</a>
+        </section>
+        <section class="mb-8 bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-3xl text-blue-500 mb-4">Purposes:</h2>
+            <p class="text-xl text-gray-700">This API is created to provide the
+                functionality of a training pseudo online merchandise store from
+                my university, UCLan (University of Central Lancashire). This is
+                part of the backend, the front will be implemented based on my
+                gradually growing project <i>limarkdl/frontend-main-practice-own</i> (github).
 
-    <section class="mb-8 bg-white shadow-md rounded-lg p-6 ">
-        <h2 class="text-2xl text-blue-500 mb-2">Structure:</h2>
-        <p class="text-lg text-red-500">All sensitive data was secured by privileges management</p>
-        <p class="text-lg text-red-500">It's always better to keep structure in secret, but:</p>
-        <pre class="text-xs"><span style="color:#12488B"><b>.</b></span>
-└── <span style="color:#12488B"><b>src</b></span>
-    ├── <span style="color:#12488B"><b>config</b></span>
-    │   └── Database.php
-    ├── <span style="color:#12488B"><b>controllers</b></span>
-    │   └── UserController.php
-    ├── <span style="color:#12488B"><b>models</b></span>
-    │   ├── Offer.php
-    │   ├── Order.php
-    │   ├── Product.php
-    │   └── User.php
-    ├── <span style="color:#12488B"><b>public</b></span>
-    │   ├── <span style="color:#12488B"><b>api</b></span>
-    │   │   ├── <span style="color:#12488B"><b>login</b></span>
-    │   │   │   └── index.php
-    │   │   └── <span style="color:#12488B"><b>signup</b></span>
-    │   │       └── index.php
-    │   ├── index.css
-    │   └── index.html
-    └── <span style="color:#12488B"><b>tests</b></span>
-        └── <span style="color:#12488B"><b>Integration</b></span>
-            ├── <span style="color:#12488B"><b>Database</b></span>
-            │   └── getConnection.test.php
-            └── Report.php
+                The plans are to implement all the basic authentication
+                functionality and go deeper to learn more about the internals
+                in order to initially create secure and fast interfaces.</p>
+        </section>
+        <section class="mb-8 bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-3xl text-blue-500 mb-4">Methods:</h2>
+            <div class="w-full overflow-auto">
+                <table class="w-full text-lg border-2 text-gray-700">
+                    <thead class="border-b-2 border-gray-300 text-center ">
+                    <tr>
+                        <th class="pb-2 border-r-2">Entry</th>
+                        <th class="pb-2 border-r-2 ">Type</th>
+                        <th class="pb-2 border-r-2 ">JSON</th>
+                        <th class="pb-2 border-r-2 ">Notes</th>
+                    </tr>
+                    </thead>
+                    <tbody >
+                    <tr class="mb-2">
+                        <td class="indexMethodsTD Entry">login/</td>
+                        <td class="indexMethodsTD">POST</td>
+                        <td class="indexMethodsTD">"username" + "password"</td>
+                        <td class="indexMethodsTD Note">-</td>
+                    </tr>
+                    <tr class="mb-2">
+                        <td class="indexMethodsTD Entry">signup/</td>
+                        <td class="indexMethodsTD">POST</td>
+                        <td class="indexMethodsTD">"username" + "password" + "email"</td>
+                        <td class="indexMethodsTD Note">-</td>
+                    </tr>
+                    <tr>
+                        <td class="indexMethodsTD Entry">delete/</td>
+                        <td class="indexMethodsTD">POST</td>
+                        <td class="indexMethodsTD">"username" + "password"</td>
+                        <td class="indexMethodsTD Note">Must be logged in to this account</td>
+                    </tr>
+                    <tr class="mb-2">
+                        <td class="indexMethodsTD Entry">getAllUsers/</td>
+                        <td class="indexMethodsTD">POST</td>
+                        <td class="indexMethodsTD">"username" + "password"</td>
+                        <td class="indexMethodsTD Note">Only for "role": "admin", Must be logged in</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="mb-8 bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-3xl text-blue-500 mb-4">Functionality:</h2>
+            <div class="w-full overflow-auto">
+                <table class="w-full text-lg border-2 text-gray-700">
+                    <thead class="border-b-2 border-gray-300 text-center ">
+                    <tr>
+                        <th class="pb-2 border-r-2 ">Desc</th>
+                        <th class="pb-2 border-r-2">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody >
+                    <tr>
+                        <td class="indexFunctionalityTD"><span class="Type">Global: </span>Session Management</td>
+                        <td class="indexFunctionalityTD Status done">DONE</td>
+                    </tr>
+                    <tr>
+                        <td class="indexFunctionalityTD"><span class="Type">Global: </span>Roles/Permissions</td>
+                        <td class="indexFunctionalityTD Status done">DONE</td>
+                    </tr>
+                    <tr class="mb-2">
+                        <td class="indexFunctionalityTD"><span class="Type">User: </span>Signing up</td>
+                        <td class="indexFunctionalityTD Status done">DONE</td>
+                    </tr>
+                    <tr class="mb-2">
+                        <td class="indexFunctionalityTD"><span class="Type">User: </span>Log in</td>
+                        <td class="indexFunctionalityTD Status done">DONE</td>
+                    </tr>
+                    <tr class="mb-2">
+                        <td class="indexFunctionalityTD"><span class="Type">User: </span>Log out</td>
+                        <td class="indexFunctionalityTD Status done">DONE</td>
+                    </tr>
+                    <tr class="mb-2">
+                        <td class="indexFunctionalityTD"><span class="Type">User: </span>Update</td>
+                        <td class="indexFunctionalityTD Status inProgress">NOT YET</td>
+                    </tr>
+                    <tr>
+                        <td class="indexFunctionalityTD"><span class="Type">User: </span>Delete</td>
+                        <td class="indexFunctionalityTD Status done">DONE</td>
+                    </tr>
+
+                    <tr>
+                        <td class="indexFunctionalityTD"><span class="Type">User:admin: </span>Get all users</td>
+                        <td class="indexFunctionalityTD Status done">DONE</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+        <section class="mb-8 bg-white shadow-md rounded-lg p-6 flex flex-col">
+            <h2 class="text-3xl text-blue-500 mb-4">Current status / Report:</h2>
+            <iframe class="flex-grow" src="https://vesta.uclan.ac.uk/~ikostin/API_UCLanMerchShop.php/tests/Integration/Report.php" width="100%" style="overflow-x: hidden; max-width: '100%'" height="1200px"></iframe>
+        </section>
+        <section class="mb-8 bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-3xl text-blue-500 mb-4">Structure:</h2>
+            <p class="text-red-500 mb-2">All sensitive data + config is secured via .htaccess</p>
+            <pre class="text-xs"><span style="color:#12488B"><b>.</b></span>
+├── <span style="color:#12488B"><b>config</b></span>
+│   └── Database.php
+├── <span style="color:#12488B"><b>controllers</b></span>
+│   └── UserController.php
+├── <span style="color:#12488B"><b>models</b></span>
+│   ├── Offer.php
+│   ├── Order.php
+│   ├── Product.php
+│   └── User.php
+├── <span style="color:#12488B"><b>public</b></span>
+│   ├── <span style="color:#12488B"><b>api</b></span>
+│   │   ├── <span style="color:#12488B"><b>delete</b></span>
+│   │   │   └── index.php
+│   │   ├── <span style="color:#12488B"><b>getAllUsers</b></span>
+│   │   │   └── index.php
+│   │   ├── <span style="color:#12488B"><b>login</b></span>
+│   │   │   └── index.php
+│   │   └── <span style="color:#12488B"><b>signup</b></span>
+│   │       └── index.php
+│   ├── index.css
+│   └── index.html
+└── <span style="color:#12488B"><b>tests</b></span>
+    └── <span style="color:#12488B"><b>Integration</b></span>
+        ├── <span style="color:#12488B"><b>controllers</b></span>
+        │   └── UserController.test.php
+        ├── <span style="color:#12488B"><b>Database</b></span>
+        │   └── getConnection.test.php
+        └── Report.php
 </pre>
-    </section>
+        </section>
 
-    <section class="mb-8 bg-white shadow-md rounded-lg p-6">
-        <h2 class="text-2xl text-blue-500 mb-2">Methods:</h2>
-        <ul class="list-disc pl-5">
-            <li class="text-lg text-gray-700">.public/login.php: POST</li>
-            <li class="text-lg text-gray-700">.public/signup.php: POST</li>
-        </ul>
-    </section>
-    <section class="mb-8 bg-white shadow-md rounded-lg p-6">
-    <h2 class="text-2xl text-blue-500 mb-2">To be continued...</h2>
-    </section>
+        <section class="mb-8 bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-3xl text-blue-500 mb-4">Author:</h2>
+            <p class="text-xl text-gray-700">Ivan Kostin, UCLan's student, Computing BCs</p>
+        </section>
 
+
+
+    </div>
 </div>
+
+
+
+
 
 </body>
 

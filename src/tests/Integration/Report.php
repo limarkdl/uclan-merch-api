@@ -28,15 +28,24 @@ foreach ($tests as $test) {
     $testName = $test[0];
     $passed = $test[1];
     $message = $test[2];
-    $output = isset($test[3]) ? $test[3] : "No output for test";
+    $output = null;
+
+
+    if (isset($test[3])) {
+        $output = $test[3];
+        $output = json_decode($output, JSON_PRETTY_PRINT);
+        $output = json_encode($output, JSON_PRETTY_PRINT);
+    } else {
+        $output = "No output for test";
+    }
     $bgColor = $passed ? 'bg-green-500' : 'bg-red-500';
     $icon = $passed ? '✓' : '✖';
     echo <<<HTML
-    <div class="p-6 w-5/6 rounded mb-4 shadow-md ml-auto mr-auto $bgColor text-white">
-        <h2 class="text-2xl mb-2">$testName</h2>
+    <div class="p-6 md:w-10/12 w-full rounded mb-4 shadow-md ml-auto mr-auto $bgColor text-white">
+        <h2 class="text-2xl mb-2">$testName <span class="text-2xl">$icon</span></h2>
         <p>$message</p>
-        <p>$icon</p>
-         <code class="json">$output</code>
+        <br />
+         <pre class="text-xs font-bold overflow-x-scroll">$output</pre>
     </div>
 HTML;
 }
