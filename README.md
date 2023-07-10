@@ -6,9 +6,6 @@ basic authentication functionality and go deeper to learn more about the interna
 
 <b>There is no sensitive data, it's all hidden with .htaccess and other techiques </b>
 
-ABOUT PAGE:
-<a href="https://vesta.uclan.ac.uk/~ikostin/API_UCLanMerchShop.php/public/">CLICK ME</a>
-
 STRUCTURE:
 
 <pre><span style="color:#12488B"><b>.</b></span>
