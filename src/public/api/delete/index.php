@@ -35,7 +35,7 @@ try {
     $username = strip_tags($data->username);
     $password = strip_tags($data->password);
 
-    if(isset($_SESSION['user']) && $_SESSION['user']['username'] === $username) {
+    if (isset($_SESSION['user']) && $_SESSION['user']['username'] === $username) {
         $userController->deleteUser($username, $password);
     } else {
         http_response_code(403);

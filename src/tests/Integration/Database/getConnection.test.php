@@ -1,5 +1,6 @@
 <?php
-function testGetConnection() {
+function testGetConnection()
+{
     $database = new Database();
     $conn = $database->getConnection();
     $passed = $conn !== null;

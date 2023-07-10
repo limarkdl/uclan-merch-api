@@ -2,7 +2,8 @@
 
 require_once __DIR__ . '/../../../controllers/UserController.php';
 
-function testGetAllUsers() {
+function testGetAllUsers()
+{
     $controller = new UserController();
     ob_start();
     $controller->getAllUsers();
@@ -15,8 +16,8 @@ function testGetAllUsers() {
     return ['User Controller: Get All Users', $passed, $message, $output];
 }
 
-
-function testCreateUser() {
+function testCreateUser()
+{
     $controller = new UserController();
     $testData = [
         'username' => 'testUser',
@@ -37,7 +38,8 @@ function testCreateUser() {
     return ['User Controller: Create User', $passed, $message, $output];
 }
 
-function testLoginUser() {
+function testLoginUser()
+{
 
     $controller = new UserController();
     $testData = [
@@ -61,8 +63,22 @@ function testLoginUser() {
     return ['User Controller: Login User', $passed, $message, $output];
 }
 
+function testLogoutUser()
+{
+    $controller = new UserController();
 
-function testDeleteUser() {
+    $output = $controller->logoutUser();
+    $outputJson = json_encode($output, true);
+
+    $passed = isset($output['logoutMessage']) && $output['logoutMessage'] == 'Successfully logged out';
+
+    $message = $passed ? 'User log out successful' : 'Failed to log out user';
+
+    return ['User Controller: Log out User', $passed, $message, $outputJson];
+}
+
+function testDeleteUser()
+{
     $userController = new UserController();
     $user = new User();
     $testUser = $user->getUserByUsername('testUser');

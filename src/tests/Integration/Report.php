@@ -10,9 +10,9 @@
     <div id="tests" class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <br />
         <p class="text-center"><?php
-            date_default_timezone_set('Asia/Nicosia');
-            echo date("Y-m-d H:i:s") . " Cyprus, Nicosia"
-            ?></p>
+date_default_timezone_set('Asia/Nicosia');
+echo date("Y-m-d H:i:s") . " Cyprus, Nicosia"
+?></p>
     </div>
 </div>
 <?php
@@ -22,14 +22,13 @@ require_once __DIR__ . '/../../config/Database.php';
 require_once __DIR__ . '/Database/getConnection.test.php';
 require_once __DIR__ . '/controllers/UserController.test.php';
 
-$tests = [testGetConnection(), testCreateUser(), testLoginUser(), testGetAllUsers(), testDeleteUser()];
+$tests = [testGetConnection(), testCreateUser(), testLoginUser(), testLogoutUser(), testLoginUser(), testGetAllUsers(), testDeleteUser()];
 
 foreach ($tests as $test) {
     $testName = $test[0];
     $passed = $test[1];
     $message = $test[2];
     $output = null;
-
 
     if (isset($test[3])) {
         $output = $test[3];

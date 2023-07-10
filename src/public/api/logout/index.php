@@ -22,25 +22,17 @@ if (json_last_error() !== JSON_ERROR_NONE || empty($data)) {
     exit();
 }
 
-if (!isset($data->username, $data->password, $data->email) ||
-    !is_string($data->username) ||
-    !is_string($data->password) ||
-    !filter_var($data->email, FILTER_VALIDATE_EMAIL)) {
+if (!isset($data->username, $data->password) || !is_string($data->username) || !is_string($data->password)) {
     http_response_code(400);
-    echo json_encode(['error' => 'Invalid or missing username/password/email']);
+    echo json_encode(['error' => 'Invalid or missing username/password']);
     exit();
 }
 
 $userController = new UserController();
 
 try {
-    $userData = [
-        'username' => strip_tags($data->username),
-        'password' => strip_tags($data->password),
-        'email' => strip_tags($data->email),
-    ];
+    echo json_encode($userController->logoutUser(), JSON_PRETTY_PRINT);
 
-    $userController->createUser($userData);
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(['error' => $e->getMessage()]);

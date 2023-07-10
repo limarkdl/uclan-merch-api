@@ -7,14 +7,12 @@ class User
     private $conn;
     private $table = 'tbl_users';
 
-    // User properties
     public $id;
     public $username;
     public $password;
     public $email;
     public $role;
 
-    // Constructor with DB
     public function __construct()
     {
         $database = new Database();

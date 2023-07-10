@@ -49,10 +49,8 @@ class UserController
             throw new Exception('Username is already taken');
         }
 
-
         $this->user->password = password_hash($data['password'], PASSWORD_BCRYPT);
         $this->user->email = strip_tags($data['email']);
-
 
         if ($this->user->create()) {
             echo json_encode(array('message' => 'User Created'));
@@ -89,7 +87,6 @@ class UserController
         }
     }
 
-
     // Logout
     public function logoutUser()
     {
@@ -98,7 +95,6 @@ class UserController
         }
 
         $_SESSION = array();
-        error_reporting(0);
 
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();

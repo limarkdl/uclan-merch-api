@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once __DIR__ . '/../../../controllers/UserController.php';
+require_once __DIR__ . '../../../../controllers/UserController.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -37,7 +37,6 @@ try {
     ];
 
     $userController->loginUser($userData);
-
 
 } catch (Exception $e) {
     http_response_code(500);

@@ -17,9 +17,11 @@
 .indexFunctionalityTD {
     @apply text-black p-2 text-xs font-bold;
 }
+
 .indexFunctionalityTD.Status {
     @apply font-bold text-center;
 }
+
 .Type {
     @apply text-[12px] text-gray-400;
 }
