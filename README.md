@@ -1,12 +1,11 @@
-# uclan-merch-api
-This API is being created to provide the functionality of a training pseudo online merchandise store from my university,
-UCLan (University of Central Lancashire). This is part of the backend, the front will be implemented based on my 
-gradually growing project <i>limarkdl/frontend-main-practice-own (github)</i>. The plans are to implement all the
-basic authentication functionality and go deeper to learn more about the internals in order to initially create secure and fast interfaces.
+# UCLAN Merch API
 
-<b>There is no sensitive data, it's all hidden with .htaccess and other techiques </b>
+This API is being created to provide the functionality of a training pseudo online merchandise store from my university, UCLan (University of Central Lancashire). This is part of the backend, the front will be implemented based on my gradually growing project [limarkdl/frontend-main-practice-own](https://github.com/limarkdl/frontend-main-practice-own). The plans are to implement all the basic authentication functionality and go deeper to learn more about the internals in order to initially create secure and fast interfaces.
 
-STRUCTURE:
+> **Note:** There is no sensitive data published, it's all hidden with .htaccess, .gitignore and other techniques.
+
+## Structure
+
 
 <pre><span style="color:#12488B"><b>.</b></span>
 ├── <span style="color:#12488B"><b>config</b></span>
@@ -42,20 +41,16 @@ STRUCTURE:
 </pre>
 
 
-METHODS:
-<br/>
+## Methods
+
 ![Methods Image](about/Methods.png)
 
+## Functionality
 
-FUNCTIONALITY:
-<br/>
 ![Functionality Image](about/Functionality.png)
 
+## Report Example
 
-REPORT EXAMPLE:
-<br/>
 ![Report Image](about/Report.png)
-
-
 
 
