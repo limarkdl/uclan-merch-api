@@ -1,6 +1,6 @@
 # UCLAN Merch API
 
-This API is being created to provide the functionality of a training pseudo online merchandise store from my university, UCLan (University of Central Lancashire). This is part of the backend, the front will be implemented based on my gradually growing project [limarkdl/frontend-main-practice-own](https://github.com/limarkdl/frontend-main-practice-own). The plans are to implement all the basic authentication functionality and go deeper to learn more about the internals in order to initially create secure and fast interfaces.
+This API is being created to provide the functionality of a training pseudo online merchandise store from my university, UCLan (University of Central Lancashire). This is part of the backend, the front is being implemented based on my gradually growing project [@limarkdl/frontend-main-practice-own](https://github.com/limarkdl/frontend-main-practice-own) in my repository on a private account [@limarkdl-private/uclan-merch-shop](https://github.com/uclan-merch-shop). The plans are to implement all the basic authentication functionality and go deeper to learn more about the internals in order to initially create secure and fast interfaces.
 
 > **Note:** There is no sensitive data published, it's all hidden with .htaccess, .gitignore and other techniques.
 
